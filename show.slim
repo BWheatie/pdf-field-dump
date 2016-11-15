@@ -1,0 +1,16 @@
+h1 @carrier.name
+
+.fieldnames.table.col-md-2
+  table
+    thead
+      tr
+        th Field Type
+        th Field Name
+    tbody
+      - @carrier.field_names.each do |k, v|
+        tr
+          td = k
+          td = v
+
+.preview.col-md-3.offset-md-4
+  iframe src="#{@carrier.contract_template}" width="700" height="550" type='application/pdf'

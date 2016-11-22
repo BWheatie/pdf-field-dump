@@ -1,16 +1,13 @@
-h1 @carrier.name
+h1
+  = @carrier.name
 
-.fieldnames.table.col-md-2
-  table
-    thead
-      tr
-        th Field Type
-        th Field Name
-    tbody
-      - @carrier.field_names.each do |k, v|
-        tr
-          td = k
-          td = v
+.col-md-4.offset-md-6
+  h5 New Fields
+  - newfields = @carrier.field_names.each { |f| f.shift}.flatten - Contracting::ATTRIBUTES.flatten
+  - newfields.each do |d|
+    dl
+      dd
+        = d
 
-.preview.col-md-3.offset-md-4
+.col-md-4
   iframe src="#{@carrier.contract_template}" width="700" height="550" type='application/pdf'
